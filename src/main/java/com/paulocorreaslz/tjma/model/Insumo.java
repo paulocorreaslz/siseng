@@ -69,6 +69,4 @@ public class Insumo implements Serializable {
 		this.tipoInsumo = tipoInsumo;
 	}
 	
-	
-	
 }

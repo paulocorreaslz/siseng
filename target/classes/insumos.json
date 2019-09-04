@@ -4,27 +4,41 @@
     "descricao": "Argila",
     "unidade": "kilo",
     "preco": 10.50,
-    "tipoinsumo": "MATERIAL"
+    "tipoInsumo": "MATERIAL"
   },
   {
     "id": 101,
     "descricao": "Saco de Cimento",
     "unidade": "unidade",
     "preco": 45.50,
-    "tipoinsumo": "MATERIAL"
+    "tipoInsumo": "MATERIAL"
   },
   {
     "id": 102,
     "descricao": "Areia Branca",
     "unidade": "kilo",
     "preco": 9.99,
-    "tipoinsumo": "MATERIAL"
+    "tipoInsumo": "MATERIAL"
   },
   {
   	"id": 103,
     "descricao": "Brita",
     "unidade": "kilo",
     "preco": 12.00,
-    "tipoinsumo": "MATERIAL"
+    "tipoInsumo": "MATERIAL"
+  }, 
+  {
+  	"id": 104,
+    "descricao": "Engenheiro Civil",
+    "unidade": "hora",
+    "preco": 30.00,
+    "tipoInsumo": "MAODEOBRA"
+  }, 
+  {
+  	"id": 105,
+    "descricao": "Pedreiro",
+    "unidade": "hora",
+    "preco": 10.00,
+    "tipoInsumo": "MAODEOBRA"
   }
 ]

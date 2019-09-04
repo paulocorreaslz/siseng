@@ -34,8 +34,9 @@ public class InsumoServiceImp implements InsumoService {
         return ResponseEntity.ok(response);
 	}
 
+
 	@Override
-	public ResponseEntity<GenericResponse<List<Insumo>>> findByTipoInsumo(TipoInsumo tipo) {
+	public ResponseEntity<GenericResponse<List<Insumo>>> findByTipoInsumo(String tipo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

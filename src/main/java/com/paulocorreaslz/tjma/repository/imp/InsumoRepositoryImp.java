@@ -11,7 +11,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -33,12 +32,10 @@ public class InsumoRepositoryImp implements InsumoRepository {
 		 try {
 	            BufferedReader insumosJson = new BufferedReader(new FileReader(RESOURCES_PATH + "/insumos.json"));
 	            
-	            List<Insumo> listInsumos = new Gson().fromJson(insumosJson, new TypeToken<List<Insumo>>() {
-	            }.getType());
+	            List<Insumo> listInsumos = new Gson().fromJson(insumosJson, new TypeToken<List<Insumo>>() {}.getType());
 	            List<Insumo> listInsumosUpdate = new ArrayList<Insumo>();
 	            listInsumos.forEach( 
 						insumo -> { 
-								insumo.setTipoInsumo(TipoInsumo.MATERIAL);
 								listInsumosUpdate.add(insumo);
 							}
 						);
@@ -48,6 +45,20 @@ public class InsumoRepositoryImp implements InsumoRepository {
 	            LOG.error(e.getMessage());
 	            return new ArrayList<>();
 	        }
+	}
+	
+	@Override
+	public List<Insumo> findByTipoInsumo(String tipo) {
+		 List<Insumo> listInsumos = this.findAll();
+         
+		listInsumos.forEach( 
+				insumo -> { 
+					if (insumo.getTipoInsumo() != TipoInsumo.MATERIAL)
+						listInsumos.remove(insumo);
+					}
+				);
+
+		return listInsumos;
 	}
 	
 }
