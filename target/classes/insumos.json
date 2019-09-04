@@ -1,0 +1,22 @@
+[
+  {
+    "nome": "Argila",
+    "medida": "BSB",
+    "preco": 10.50
+  },
+  {
+    "nome": "Saco de Cimento",
+    "medida": "VIX",
+    "preco": 45.50
+  },
+  {
+    "nome": "Areia Branca",
+    "medida": "MCZ",
+    "preco": 9.99
+  },
+  {
+    "nome": "Brita",
+    "medida": "MCZ",
+    "preco": 12.00
+  }
+]
