@@ -1,22 +1,30 @@
 [
   {
-    "nome": "Argila",
-    "medida": "BSB",
-    "preco": 10.50
+  	"id": 100,
+    "descricao": "Argila",
+    "unidade": "kilo",
+    "preco": 10.50,
+    "tipoinsumo": "MATERIAL"
   },
   {
-    "nome": "Saco de Cimento",
-    "medida": "VIX",
-    "preco": 45.50
+    "id": 101,
+    "descricao": "Saco de Cimento",
+    "unidade": "unidade",
+    "preco": 45.50,
+    "tipoinsumo": "MATERIAL"
   },
   {
-    "nome": "Areia Branca",
-    "medida": "MCZ",
-    "preco": 9.99
+    "id": 102,
+    "descricao": "Areia Branca",
+    "unidade": "kilo",
+    "preco": 9.99,
+    "tipoinsumo": "MATERIAL"
   },
   {
-    "nome": "Brita",
-    "medida": "MCZ",
-    "preco": 12.00
+  	"id": 103,
+    "descricao": "Brita",
+    "unidade": "kilo",
+    "preco": 12.00,
+    "tipoinsumo": "MATERIAL"
   }
 ]
