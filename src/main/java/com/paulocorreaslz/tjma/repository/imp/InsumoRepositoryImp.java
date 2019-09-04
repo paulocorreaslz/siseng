@@ -19,7 +19,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.paulocorreaslz.tjma.model.Insumo;
 import com.paulocorreaslz.tjma.repository.InsumoRepository;
-import com.paulocorreaslz.tjma.util.TipoInsumo;
 
 @Repository
 public class InsumoRepositoryImp implements InsumoRepository {
@@ -33,14 +32,8 @@ public class InsumoRepositoryImp implements InsumoRepository {
 	            BufferedReader insumosJson = new BufferedReader(new FileReader(RESOURCES_PATH + "/insumos.json"));
 	            
 	            List<Insumo> listInsumos = new Gson().fromJson(insumosJson, new TypeToken<List<Insumo>>() {}.getType());
-	            List<Insumo> listInsumosUpdate = new ArrayList<Insumo>();
-	            listInsumos.forEach( 
-						insumo -> { 
-								listInsumosUpdate.add(insumo);
-							}
-						);
-
-	            return listInsumosUpdate;
+	            
+	            return listInsumos;
 	        } catch (FileNotFoundException e) {
 	            LOG.error(e.getMessage());
 	            return new ArrayList<>();
@@ -49,16 +42,18 @@ public class InsumoRepositoryImp implements InsumoRepository {
 	
 	@Override
 	public List<Insumo> findByTipoInsumo(String tipo) {
-		 List<Insumo> listInsumos = this.findAll();
-         
+		List<Insumo> listInsumos = this.findAll();
+        List<Insumo> listInsumosType = new ArrayList<>(); 
+        
 		listInsumos.forEach( 
-				insumo -> { 
-					if (insumo.getTipoInsumo() != TipoInsumo.MATERIAL)
-						listInsumos.remove(insumo);
+				insumo -> {
+					System.out.println(insumo.getTipoInsumo().toString());
+					if (insumo.getTipoInsumo().toString().equalsIgnoreCase(tipo))
+						listInsumosType.add(insumo);
 					}
 				);
 
-		return listInsumos;
+		return listInsumosType;
 	}
 	
 }

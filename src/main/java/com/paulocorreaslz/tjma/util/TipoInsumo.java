@@ -2,5 +2,10 @@ package com.paulocorreaslz.tjma.util;
 
 public enum TipoInsumo {
 	MAODEOBRA,
-	MATERIAL
+	MATERIAL;
+	
+	@Override
+    public String toString() {
+        return name();
+    }
 }

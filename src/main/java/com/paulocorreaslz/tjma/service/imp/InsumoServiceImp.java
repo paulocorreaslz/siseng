@@ -37,8 +37,16 @@ public class InsumoServiceImp implements InsumoService {
 
 	@Override
 	public ResponseEntity<GenericResponse<List<Insumo>>> findByTipoInsumo(String tipo) {
-		// TODO Auto-generated method stub
-		return null;
+		GenericResponse<List<Insumo>> response = new GenericResponse<>();
+
+        List<Insumo> insumos = this.insumoRepository.findByTipoInsumo(tipo);
+        if (insumos.isEmpty()) {
+            response.getErrors().add("Nenhum insumo encontrado.");
+            return ResponseEntity.badRequest().body(response);
+        }
+
+        response.setData(insumos);
+        return ResponseEntity.ok(response);
 	}
 
 }
