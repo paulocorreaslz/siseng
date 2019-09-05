@@ -30,7 +30,8 @@ public class Insumo implements Serializable {
 	public Insumo() {
 	}
 	
-	public Insumo(String descricao, String unidade, BigDecimal preco, TipoInsumo tipoInsumo) {
+	public Insumo(long id, String descricao, String unidade, BigDecimal preco, TipoInsumo tipoInsumo) {
+		this.id = id;
 		this.descricao = descricao;
 		this.unidade = unidade;
 		this.preco = preco;

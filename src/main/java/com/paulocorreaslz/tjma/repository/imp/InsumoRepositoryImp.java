@@ -1,6 +1,8 @@
 package com.paulocorreaslz.tjma.repository.imp;
-
-
+/**
+ * @author Paulo Correa <pauloyaco@gmail.com> - 2019
+ *
+ */
 import java.io.BufferedReader;
 /**
  * @author Paulo Correa <pauloyaco@gmail.com> - 2019

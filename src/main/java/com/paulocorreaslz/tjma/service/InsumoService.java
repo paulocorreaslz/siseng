@@ -1,5 +1,8 @@
 package com.paulocorreaslz.tjma.service;
-
+/**
+ * @author Paulo Correa <pauloyaco@gmail.com> - 2019
+ *
+ */
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;

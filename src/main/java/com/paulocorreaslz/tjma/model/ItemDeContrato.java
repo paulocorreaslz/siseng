@@ -1,5 +1,8 @@
 package com.paulocorreaslz.tjma.model;
-
+/**
+ * @author Paulo Correa <pauloyaco@gmail.com> - 2019
+ *
+ */
 public class ItemDeContrato {
 	
 	private long id;
@@ -41,6 +44,6 @@ public class ItemDeContrato {
 	@Override
 	public String toString() {
 		
-		return "[ Item: "+this.getInsumo().getDescricao() + " - " + this.getInsumo().getTipoInsumo().toString() + " - " + this.getInsumo().getUnidade() + " - " + this.getInsumo().getPreco().toString() + " - quantidade: " + this.getQuantidade()  +"]";
+		return "[ Item: "+ this.getId() + " - "+this.getInsumo().getDescricao() + " - " + this.getInsumo().getTipoInsumo().toString() + " - " + this.getInsumo().getUnidade() + " - " + this.getInsumo().getPreco().toString()  +"]";
 	}
 }
