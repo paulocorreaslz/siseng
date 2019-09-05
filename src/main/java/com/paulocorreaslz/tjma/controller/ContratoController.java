@@ -15,7 +15,6 @@ import com.paulocorreaslz.tjma.model.Contrato;
 import com.paulocorreaslz.tjma.model.Insumo;
 import com.paulocorreaslz.tjma.model.ItemDeContrato;
 import com.paulocorreaslz.tjma.response.GenericResponse;
-import com.paulocorreaslz.tjma.service.InsumoService;
 import com.paulocorreaslz.tjma.service.imp.InsumoServiceImp;
 
 import io.swagger.annotations.ApiOperation;

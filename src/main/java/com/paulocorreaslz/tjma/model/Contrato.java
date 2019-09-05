@@ -23,6 +23,14 @@ public class Contrato {
 	            System.out.println(mapElement.getKey() + " : " + marks); 
 	        } 
 		}
+		public void calcularValorItemContrato() {
+//			Iterator hashIterator = items.entrySet().iterator(); 
+//	        while (hashIterator.hasNext()) { 
+//	            Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
+//	            int marks = ((int)mapElement.getValue());
+//	            System.out.println(mapElement.getKey() + " : " + marks); 
+//	        } 
+		}
 		
 		public void adicionarItem(int quantidade, ItemDeContrato item) {
 			this.items.put(item, quantidade); 
