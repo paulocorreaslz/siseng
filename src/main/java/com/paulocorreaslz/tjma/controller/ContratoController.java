@@ -68,8 +68,13 @@ public class ContratoController {
 		con.adicionarItem(4, item4);
 		con.adicionarItem(5, item5);
 		
-		con.mostrarItems();
+		con.mostrarItemsContrato();
+		con.calcularValorItemContrato();
 		
+
+		//con.mostrarItemsContratoComposto();
+		//con.calcularValorItemContratoComposto();
+				
 		return con;
 	}
 }

@@ -1,5 +1,6 @@
 package com.paulocorreaslz.tjma.model;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,25 +16,31 @@ public class Contrato {
 			this.contrato = contrato;
 		}
 		
-		public void mostrarItems() {
-			Iterator hashIterator = items.entrySet().iterator(); 
+		public void mostrarItemsContrato() {
+			Iterator hashIterator = getItems().entrySet().iterator(); 
 	        while (hashIterator.hasNext()) { 
 	            Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
-	            int marks = ((int)mapElement.getValue());
-	            System.out.println(mapElement.getKey() + " : " + marks); 
+	            int index = ((int) mapElement.getValue());
+	            ItemDeContrato item = (ItemDeContrato) mapElement.getKey();
+	            System.out.println(item.toString() + " : " + index); 
 	        } 
 		}
+		
 		public void calcularValorItemContrato() {
-//			Iterator hashIterator = items.entrySet().iterator(); 
-//	        while (hashIterator.hasNext()) { 
-//	            Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
-//	            int marks = ((int)mapElement.getValue());
-//	            System.out.println(mapElement.getKey() + " : " + marks); 
-//	        } 
+			Iterator hashIterator = getItems().entrySet().iterator();
+			BigDecimal Total = null;
+	        while (hashIterator.hasNext()) { 
+	            BigDecimal subTotal = null;
+	        	Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
+	            int index = ((int) mapElement.getValue());
+	            ItemDeContrato item = (ItemDeContrato) mapElement.getKey();
+	            subTotal = (BigDecimal) item.getInsumo().getPreco().multiply(new java.math.BigDecimal(index));
+	            System.out.println(item.toString() + " * "+ index + " : " + subTotal); 
+	        }  
 		}
 		
-		public void adicionarItem(int quantidade, ItemDeContrato item) {
-			this.items.put(item, quantidade); 
+		public void adicionarItem(int index, ItemDeContrato item) {
+			this.items.put(item, index); 
 		}
 		
 		public void removerItem(ItemDeContrato item) {

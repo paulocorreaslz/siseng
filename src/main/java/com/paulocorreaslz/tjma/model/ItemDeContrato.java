@@ -38,4 +38,9 @@ public class ItemDeContrato {
 		this.quantidade = quantidade;
 	}
 	
+	@Override
+	public String toString() {
+		
+		return "[ Item: "+this.getInsumo().getDescricao() + " - " + this.getInsumo().getTipoInsumo().toString() + " - " + this.getInsumo().getUnidade() + " - " + this.getInsumo().getPreco().toString() + " - quantidade: " + this.getQuantidade()  +"]";
+	}
 }
