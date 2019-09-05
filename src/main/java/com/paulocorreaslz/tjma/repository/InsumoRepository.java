@@ -13,4 +13,5 @@ public interface InsumoRepository {
 
 		List<Insumo> findByTipoInsumo(String tipo);
 	
+		List<Insumo> findById(long id);
 }

@@ -40,5 +40,12 @@
     "unidade": "hora",
     "preco": 10.00,
     "tipoInsumo": "MAODEOBRA"
+  }, 
+  {
+  	"id": 106,
+    "descricao": "Tijolo",
+    "unidade": "unidade",
+    "preco": 3.00,
+    "tipoInsumo": "MAODEOBRA"
   }
 ]

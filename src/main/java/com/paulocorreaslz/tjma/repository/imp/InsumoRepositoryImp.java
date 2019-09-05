@@ -43,17 +43,33 @@ public class InsumoRepositoryImp implements InsumoRepository {
 	@Override
 	public List<Insumo> findByTipoInsumo(String tipo) {
 		List<Insumo> listInsumos = this.findAll();
-        List<Insumo> listInsumosType = new ArrayList<>(); 
+        List<Insumo> listInsumosFiltrada = new ArrayList<>(); 
         
 		listInsumos.forEach( 
 				insumo -> {
 					System.out.println(insumo.getTipoInsumo().toString());
 					if (insumo.getTipoInsumo().toString().equalsIgnoreCase(tipo))
-						listInsumosType.add(insumo);
+						listInsumosFiltrada.add(insumo);
 					}
 				);
 
-		return listInsumosType;
+		return listInsumosFiltrada;
+	}
+
+	@Override
+	public List<Insumo> findById(long id) {
+		List<Insumo> listInsumos = this.findAll();
+        List<Insumo> listInsumosFiltrada = new ArrayList<>(); 
+        
+		listInsumos.forEach( 
+				insumo -> {
+					System.out.println(insumo.getTipoInsumo().toString());
+					if (insumo.getId() == id)
+						listInsumosFiltrada.add(insumo);
+					}
+				);
+
+		return listInsumosFiltrada;
 	}
 	
 }
