@@ -1,11 +1,9 @@
 package com.paulocorreaslz.tjma.controller;
+import java.util.HashMap;
 /**
  * @author Paulo Correa <pauloyaco@gmail.com> - 2019
  *
  */
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,11 +70,12 @@ public class ContratoController {
 		ItemDeContrato item31 = new ItemDeContrato(4, insumoService.findById(103), 4);
 		
 		//adição de items ao item de contrato composto
-		List<ItemDeContrato> items = new ArrayList<>();
-		items.add(item01);
-		items.add(item11);
-		items.add(item21);
-		items.add(item31);
+		HashMap<ItemDeContrato, Integer> items = new HashMap<>();
+
+		items.put(item01,1);
+		items.put(item11,2);
+		items.put(item21,3);
+		items.put(item31,4);
 		
 		//inserção dos items no modelo de item composto
 		ItemDeContratoComposto itemComposto = new ItemDeContratoComposto(1, items, 1);
@@ -100,11 +99,11 @@ public class ContratoController {
 		con.adicionarItemComposto(1, itemComposto);
 		
 		//con.mostrarItemsContrato();
-		con.calcularValorItemContrato();
+		con.calcularValorItemContrato(con.getItems());
 		con.mostrarItemsContratoComposto();
 
 		//con.calcularValorItemContratoComposto();
-				
+		//System.out.println(con.getTotal());		
 		return con;
 	}
 }

@@ -43,7 +43,6 @@ public class ItemDeContrato {
 	
 	@Override
 	public String toString() {
-		
-		return "[ Item: "+ this.getId() + " - "+this.getInsumo().getDescricao() + " - " + this.getInsumo().getTipoInsumo().toString() + " - " + this.getInsumo().getUnidade() + " - " + this.getInsumo().getPreco().toString()  +"]";
+		return "[ Insumo: "+ this.getInsumo().getId() + " - "+this.getInsumo().getDescricao() + " - " + this.getInsumo().getTipoInsumo().toString() + " - " + this.getInsumo().getUnidade() + " - " + this.getInsumo().getPreco().toString()  +"]";
 	}
 }

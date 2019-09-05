@@ -6,6 +6,7 @@ package com.paulocorreaslz.tjma.model;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -15,14 +16,15 @@ public class Contrato {
 		private String contrato;
 		private HashMap<ItemDeContrato, Integer> items = new HashMap<>();
 		private HashMap<ItemDeContratoComposto, Integer> itemsCompostos = new HashMap<>();
-		private BigDecimal Total = null;
+		private BigDecimal totalGeral = new java.math.BigDecimal(0);
+		
 		public Contrato(long id, String contrato) {
 			this.id = id;
 			this.contrato = contrato;
 		}
 		
-		public void mostrarItemsContrato() {
-			Iterator<Entry<ItemDeContrato, Integer>> hashIterator = getItems().entrySet().iterator(); 
+		public void mostrarItemsContrato(HashMap<ItemDeContrato, Integer> hashMap) {
+			Iterator<Entry<ItemDeContrato, Integer>> hashIterator = hashMap.entrySet().iterator(); 
 	        while (hashIterator.hasNext()) { 
 	            @SuppressWarnings("rawtypes")
 				Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
@@ -43,15 +45,18 @@ public class Contrato {
 	            if(item.getItems().isEmpty()) {
 	            	System.out.println("nenhum item de contrato composto dentro");
 	            } else {
-	            	System.out.println(item.items.toString());
+	            	System.out.println(item.getItems().toString());
+	            	calcularValorItemContratoComposto(item);
 	            }
-	            
 	            System.out.println(item.toString() + " : " + index); 
 	        } 
 		}
+		public void calcularValorItemContratoComposto(ItemDeContratoComposto composto) {
+			calcularValorItemContrato(composto.getItems());
+		}
 		
-		public void calcularValorItemContrato() {
-			Iterator<Entry<ItemDeContrato, Integer>>  hashIterator = getItems().entrySet().iterator();
+		public void calcularValorItemContrato(HashMap<ItemDeContrato, Integer> hashMap) {
+			Iterator<Entry<ItemDeContrato, Integer>>  hashIterator = hashMap.entrySet().iterator();
 			BigDecimal valorTotal = new java.math.BigDecimal(0);
 			BigDecimal subTotal = new java.math.BigDecimal(0);
 			
@@ -64,6 +69,7 @@ public class Contrato {
 	            System.out.println(item.toString() + " * "+ item.getQuantidade() + " : " + subTotal);
 	            valorTotal = valorTotal.add(subTotal);
 	        }  
+	        totalGeral = totalGeral.add(valorTotal);
 	        System.out.println("Valor Total dos items:" + valorTotal);
 		}
 		
@@ -116,11 +122,11 @@ public class Contrato {
 		}
 
 		public BigDecimal getTotal() {
-			return Total;
+			return totalGeral;
 		}
 
 		public void setTotal(BigDecimal total) {
-			Total = total;
+			totalGeral = total;
 		}
 		
 }
