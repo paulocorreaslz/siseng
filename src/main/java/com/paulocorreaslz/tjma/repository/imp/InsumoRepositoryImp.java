@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -57,19 +58,14 @@ public class InsumoRepositoryImp implements InsumoRepository {
 	}
 
 	@Override
-	public List<Insumo> findById(long id) {
+	public Insumo findById(long id) {
 		List<Insumo> listInsumos = this.findAll();
-        List<Insumo> listInsumosFiltrada = new ArrayList<>(); 
-        
-		listInsumos.forEach( 
-				insumo -> {
-					System.out.println(insumo.getTipoInsumo().toString());
-					if (insumo.getId() == id)
-						listInsumosFiltrada.add(insumo);
-					}
-				);
-
-		return listInsumosFiltrada;
+        Insumo insumoLocalizado = null;
+		for (Insumo insumo : listInsumos) {
+			if (insumo.getId() == id)
+				insumoLocalizado = insumo;
+		}
+		return insumoLocalizado;
 	}
 	
 }

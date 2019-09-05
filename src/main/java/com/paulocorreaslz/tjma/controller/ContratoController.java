@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.paulocorreaslz.tjma.model.Contrato;
 import com.paulocorreaslz.tjma.model.Insumo;
+import com.paulocorreaslz.tjma.model.ItemDeContrato;
 import com.paulocorreaslz.tjma.response.GenericResponse;
+import com.paulocorreaslz.tjma.service.InsumoService;
 import com.paulocorreaslz.tjma.service.imp.InsumoServiceImp;
 
 import io.swagger.annotations.ApiOperation;
@@ -45,5 +48,29 @@ public class ContratoController {
 	public ResponseEntity<GenericResponse<List<Insumo>>> getInsumosPorTipo(@PathVariable("tipo") String tipo) {
 		
 		return insumoService.findByTipoInsumo(tipo);
+	}
+
+	
+	@ApiOperation(value = "Método para carregar informacoes iniciais", response = Iterable.class, tags = "Carregar dados iniciais")
+	@GetMapping("/carregardados")
+	public Contrato carregarDados() {
+		
+		ItemDeContrato item1 = new ItemDeContrato(1, insumoService.findById(102), 3);
+		ItemDeContrato item2 = new ItemDeContrato(2, insumoService.findById(101), 2);
+		ItemDeContrato item3 = new ItemDeContrato(3, insumoService.findById(103), 4);
+		ItemDeContrato item4 = new ItemDeContrato(4, insumoService.findById(104), 1);
+		ItemDeContrato item5 = new ItemDeContrato(5, insumoService.findById(105), 5);
+				
+				
+		Contrato con = new Contrato(1,"Contrato de Manutenção 01");
+		con.adicionarItem(1, item1);
+		con.adicionarItem(2, item2);
+		con.adicionarItem(3, item3);
+		con.adicionarItem(4, item4);
+		con.adicionarItem(5, item5);
+		
+		con.mostrarItems();
+		
+		return con;
 	}
 }

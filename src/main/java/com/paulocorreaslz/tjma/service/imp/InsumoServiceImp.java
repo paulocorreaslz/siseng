@@ -34,7 +34,6 @@ public class InsumoServiceImp implements InsumoService {
         return ResponseEntity.ok(response);
 	}
 
-
 	@Override
 	public ResponseEntity<GenericResponse<List<Insumo>>> findByTipoInsumo(String tipo) {
 		GenericResponse<List<Insumo>> response = new GenericResponse<>();
@@ -47,6 +46,11 @@ public class InsumoServiceImp implements InsumoService {
 
         response.setData(insumos);
         return ResponseEntity.ok(response);
+	}
+
+	@Override
+	public Insumo findById(long id) {
+		return insumoRepository.findById(id);
 	}
 
 }

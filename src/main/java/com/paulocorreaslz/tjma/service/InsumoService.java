@@ -12,5 +12,7 @@ public interface InsumoService {
 	ResponseEntity<GenericResponse<List<Insumo>>> findAll();
 
 	ResponseEntity<GenericResponse<List<Insumo>>> findByTipoInsumo(String tipo);
-	
+
+	Insumo findById(long id);
+
 }
