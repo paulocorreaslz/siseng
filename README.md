@@ -82,4 +82,3 @@ Urls Disponives:
 {URL}/api/contratos - Listar todos os contatos exemplo: http://localhost:9092/api/contratos
 
 {URL}/api/contrato/{id} - Lista o contrato por id, onde o id é o numero do contrato, exemplo: http://localhost:9092/api/contrato/1
-
