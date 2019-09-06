@@ -44,19 +44,19 @@ public class ContratoController {
 		return insumoService.findAll();
 	}
 	
-	@ApiOperation(value = "Método para buscar insumos disponiveis por tipo", response = Iterable.class, tags = "listar insumos por tipo")
+	@ApiOperation(value = "Método para buscar insumos disponiveis por tipo", response = Iterable.class, tags = "Localizar insumos por tipo")
 	@GetMapping("/insumo/{tipo}")
 	public ResponseEntity<GenericResponse<List<Insumo>>> getInsumosPorTipo(@PathVariable("tipo") String tipo) {
 		return insumoService.findByTipoInsumo(tipo);
 	}
 	
-	@ApiOperation(value = "Método para carregar todos contratos", response = Iterable.class, tags = "Carregar contratos")
+	@ApiOperation(value = "Método para carregar todos contratos", response = Iterable.class, tags = "Listar todos contratos")
 	@GetMapping("/contratos")
 	public ResponseEntity<GenericResponse<List<Contrato>>> contratos() {
 		return contratoService.findAll();
 	}
 	
-	@ApiOperation(value = "Método para buscar contrato por id", response = Iterable.class, tags = "listar insumos por tipo")
+	@ApiOperation(value = "Método para buscar contrato por id", response = Iterable.class, tags = "Localizar contrato por id")
 	@GetMapping("/contrato/{id}")
 	public ResponseEntity<GenericResponse<Contrato>>  getContratosId(@PathVariable("id") long id) {
 		return contratoService.findById(id);
