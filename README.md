@@ -72,9 +72,14 @@ Resposta: "online"
 - https://siseng.herokuapp.com/
 
 Urls Disponives:
+
 {URL}/api/oneline - Testar a aplicação exemplo: http://localhost:9092/api/online
+
 {URL}/api/insumos - Listar todos os insumos exemplo: http://localhost:9092/api/insumos
+
 {URL}/api/insumo/{tipo} -  Listar insumo por tipo onde {tipo} é o nome do tipo que pode ser MATERIAL, MAODEOBRA OU COMPOSTO exemplo: http://localhost:9092/api/insumo/MATERIAL 
+
 {URL}/api/contratos - Listar todos os contatos exemplo: http://localhost:9092/api/contratos
+
 {URL}/api/contrato/{id} - Lista o contrato por id, onde o id é o numero do contrato, exemplo: http://localhost:9092/api/contrato/1
 
