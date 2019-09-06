@@ -45,6 +45,12 @@ Tecnologias Utilizadas:
 Configuração:
 - Porta servidor: 9092
 
+Executando a aplicação:
+- Baixar o projeto com o comando "git clone git@github.com:paulocorreaslz/siseng.git"
+
+Entrar no diretorio "siseng/target" e executar o comando:
+- java -jar siseng.war
+
 Utilizando a API:
 Para acessar o swagger para acessar as chamadas da API utilize os endereços abaixo.
 
@@ -60,4 +66,15 @@ Acessando a API Localmente:
 Endereço no Heroku:
 https://siseng.herokuapp.com/api/online
 Resposta: "online"
+
+{URL}:
+- http://localhost:9092/
+- https://siseng.herokuapp.com/
+
+Urls Disponives:
+{URL}/api/oneline - Testar a aplicação exemplo: http://localhost:9092/api/online
+{URL}/api/insumos - Listar todos os insumos exemplo: http://localhost:9092/api/insumos
+{URL}/api/insumo/{tipo} -  Listar insumo por tipo onde {tipo} é o nome do tipo que pode ser MATERIAL, MAODEOBRA OU COMPOSTO exemplo: http://localhost:9092/api/insumo/MATERIAL 
+{URL}/api/contratos - Listar todos os contatos exemplo: http://localhost:9092/api/contratos
+{URL}/api/contrato/{id} - Lista o contrato por id, onde o id é o numero do contrato, exemplo: http://localhost:9092/api/contrato/1
 
