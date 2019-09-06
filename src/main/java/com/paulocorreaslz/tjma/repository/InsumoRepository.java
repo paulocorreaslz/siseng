@@ -14,4 +14,6 @@ public interface InsumoRepository {
 	List<Insumo> findByTipoInsumo(String tipo);
 
 	Insumo findById(long id);
+	
+	public void Add(Insumo insumo);
 }

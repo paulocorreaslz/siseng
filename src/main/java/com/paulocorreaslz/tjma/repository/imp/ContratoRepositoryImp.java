@@ -28,10 +28,9 @@ public class ContratoRepositoryImp implements ContratoRepository {
 	public List<Contrato> findAll() {
 		List<Contrato> contratos = new ArrayList<Contrato>();
 		// criação de insumo especial composto - valor a calcular
-		Insumo insumo1 = new Insumo(210,"Levantamento de Parede","M2", new java.math.BigDecimal(0.00), TipoInsumo.COMPOSTO);
-
+		
 		// items do insumo composto especial
-		ItemDeContrato item01 = new ItemDeContrato(1, insumo1, 1);
+		ItemDeContrato item01 = new ItemDeContrato(1, insumoService.findById(210), 1);
 		ItemDeContrato item11 = new ItemDeContrato(2, insumoService.findById(102), 3);
 		ItemDeContrato item21 = new ItemDeContrato(3, insumoService.findById(101), 2);
 		ItemDeContrato item31 = new ItemDeContrato(4, insumoService.findById(103), 4);

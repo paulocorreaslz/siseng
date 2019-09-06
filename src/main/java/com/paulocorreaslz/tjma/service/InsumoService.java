@@ -18,4 +18,5 @@ public interface InsumoService {
 
 	Insumo findById(long id);
 
+	void Add(Insumo insumo);
 }

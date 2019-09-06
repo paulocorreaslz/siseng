@@ -20,8 +20,10 @@ import org.springframework.stereotype.Repository;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.paulocorreaslz.tjma.model.Contrato;
 import com.paulocorreaslz.tjma.model.Insumo;
 import com.paulocorreaslz.tjma.repository.InsumoRepository;
+import com.paulocorreaslz.tjma.util.TipoInsumo;
 
 @Repository
 public class InsumoRepositoryImp implements InsumoRepository {
@@ -32,10 +34,14 @@ public class InsumoRepositoryImp implements InsumoRepository {
 	@Override
 	public List<Insumo> findAll() {
 		 try {
-	            BufferedReader insumosJson = new BufferedReader(new FileReader(RESOURCES_PATH + "/insumos.json"));
+				
+				BufferedReader insumosJson = new BufferedReader(new FileReader(RESOURCES_PATH + "/insumos.json"));
 	            
 	            List<Insumo> listInsumos = new Gson().fromJson(insumosJson, new TypeToken<List<Insumo>>() {}.getType());
 	            
+	            Insumo insumo1 = new Insumo(210,"Levantamento de Parede","M2", new java.math.BigDecimal(0.00), TipoInsumo.COMPOSTO);
+				listInsumos.add(insumo1);
+				
 	            return listInsumos;
 	        } catch (FileNotFoundException e) {
 	            LOG.error(e.getMessage());
@@ -50,7 +56,6 @@ public class InsumoRepositoryImp implements InsumoRepository {
         
 		listInsumos.forEach( 
 				insumo -> {
-					System.out.println(insumo.getTipoInsumo().toString());
 					if (insumo.getTipoInsumo().toString().equalsIgnoreCase(tipo))
 						listInsumosFiltrada.add(insumo);
 					}
@@ -70,6 +75,11 @@ public class InsumoRepositoryImp implements InsumoRepository {
 		return insumoLocalizado;
 	}
 	
+	@Override
+	public void Add(Insumo insumo) {
+		findAll().add(insumo);
+	}
+
 }
 
 

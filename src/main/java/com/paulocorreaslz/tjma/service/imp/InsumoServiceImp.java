@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.paulocorreaslz.tjma.model.Insumo;
+import com.paulocorreaslz.tjma.repository.InsumoRepository;
 import com.paulocorreaslz.tjma.repository.imp.InsumoRepositoryImp;
 import com.paulocorreaslz.tjma.response.GenericResponse;
 import com.paulocorreaslz.tjma.service.InsumoService;
@@ -54,6 +55,11 @@ public class InsumoServiceImp implements InsumoService {
 	@Override
 	public Insumo findById(long id) {
 		return insumoRepository.findById(id);
+	}
+
+	@Override
+	public void Add(Insumo insumo) {
+		insumoRepository.Add(insumo);		
 	}
 
 }
