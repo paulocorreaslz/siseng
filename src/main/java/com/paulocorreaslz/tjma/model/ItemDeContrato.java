@@ -1,4 +1,7 @@
 package com.paulocorreaslz.tjma.model;
+
+import java.math.BigDecimal;
+
 /**
  * @author Paulo Correa <pauloyaco@gmail.com> - 2019
  *
@@ -10,6 +13,8 @@ public class ItemDeContrato {
 	private Insumo insumo;
 	
 	private int quantidade;
+	
+	private BigDecimal valor;
 	
 	public ItemDeContrato(long id, Insumo insumo, int quantidade) {
 		this.id = id;
@@ -41,6 +46,11 @@ public class ItemDeContrato {
 		this.quantidade = quantidade;
 	}
 	
+		
+	public BigDecimal getValor() {
+		return this.getInsumo().getPreco().multiply(new java.math.BigDecimal(this.getQuantidade()));
+	}
+
 	@Override
 	public String toString() {
 		return "[ Insumo: "+ this.getInsumo().getId() + " - "+this.getInsumo().getDescricao() + " - " + this.getInsumo().getTipoInsumo().toString() + " - " + this.getInsumo().getUnidade() + " - " + this.getInsumo().getPreco().toString()  +"]";

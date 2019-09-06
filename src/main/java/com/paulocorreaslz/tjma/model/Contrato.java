@@ -22,72 +22,6 @@ public class Contrato {
 			this.id = id;
 			this.contrato = contrato;
 		}
-		
-		public void mostrarItemsContrato(HashMap<ItemDeContrato, Integer> hashMap) {
-			Iterator<Entry<ItemDeContrato, Integer>> hashIterator = hashMap.entrySet().iterator(); 
-	        while (hashIterator.hasNext()) { 
-	            @SuppressWarnings("rawtypes")
-				Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
-	            int index = ((int) mapElement.getValue());
-	            ItemDeContrato item = (ItemDeContrato) mapElement.getKey();
-	            System.out.println(item.toString() + " : " + index); 
-	        } 
-		}
-		
-		public void mostrarItemsContratoComposto() {
-			Iterator<Entry<ItemDeContratoComposto, Integer>> hashIterator = getItemsCompostos().entrySet().iterator(); 
-	        while (hashIterator.hasNext()) { 
-	            @SuppressWarnings("rawtypes")
-				Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
-	            int index = ((int) mapElement.getValue());
-	            ItemDeContratoComposto item = (ItemDeContratoComposto) mapElement.getKey();
-	            
-	            if(item.getItems().isEmpty()) {
-	            	System.out.println("nenhum item de contrato composto dentro");
-	            } else {
-	            	System.out.println(item.getItems().toString());
-	            	calcularValorItemContratoComposto(item);
-	            }
-	            System.out.println(item.toString() + " : " + index); 
-	        } 
-		}
-		public void calcularValorItemContratoComposto(ItemDeContratoComposto composto) {
-			calcularValorItemContrato(composto.getItems());
-		}
-		
-		public void calcularValorItemContrato(HashMap<ItemDeContrato, Integer> hashMap) {
-			Iterator<Entry<ItemDeContrato, Integer>>  hashIterator = hashMap.entrySet().iterator();
-			BigDecimal valorTotal = new java.math.BigDecimal(0);
-			BigDecimal subTotal = new java.math.BigDecimal(0);
-			
-	        while (hashIterator.hasNext()) { 
-	            @SuppressWarnings("rawtypes")
-	        	Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
-	            int index = ((int) mapElement.getValue());
-	            ItemDeContrato item = (ItemDeContrato) mapElement.getKey();
-	            subTotal = (BigDecimal) item.getInsumo().getPreco().multiply(new java.math.BigDecimal(item.getQuantidade()));
-	            System.out.println(item.toString() + " * "+ item.getQuantidade() + " : " + subTotal);
-	            valorTotal = valorTotal.add(subTotal);
-	        }  
-	        totalGeral = totalGeral.add(valorTotal);
-	        System.out.println("Valor Total dos items:" + valorTotal);
-		}
-		
-		public void adicionarItem(int index, ItemDeContrato item) {
-			this.items.put(item, index); 
-		}
-		
-		public void removerItem(ItemDeContrato item) {
-			this.items.remove(item);
-		}
-		
-		public void adicionarItemComposto(int index, ItemDeContratoComposto item) {
-			this.itemsCompostos.put(item, index); 
-		}
-		
-		public void removerItemComposto(ItemDeContratoComposto item) {
-			this.itemsCompostos.remove(item);
-		}
 
 		public long getId() {
 			return id;
@@ -129,4 +63,30 @@ public class Contrato {
 			totalGeral = total;
 		}
 		
+		public void adicionarItem(int index, ItemDeContrato item) {
+			this.items.put(item, index); 
+		}
+		
+		public void removerItem(ItemDeContrato item) {
+			this.items.remove(item);
+		}
+		
+		public void adicionarItemComposto(int index, ItemDeContratoComposto item) {
+			this.itemsCompostos.put(item, index); 
+		}
+		
+		public void removerItemComposto(ItemDeContratoComposto item) {
+			this.itemsCompostos.remove(item);
+		}
+		
+		public void mostrarItemsContrato(HashMap<ItemDeContrato, Integer> hashMap) {
+			Iterator<Entry<ItemDeContrato, Integer>> hashIterator = hashMap.entrySet().iterator(); 
+	        while (hashIterator.hasNext()) { 
+	            @SuppressWarnings("rawtypes")
+				Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
+	            int index = ((int) mapElement.getValue());
+	            ItemDeContrato item = (ItemDeContrato) mapElement.getKey();
+	            System.out.println(item.toString() + " : " + index); 
+	        } 
+		}
 }
