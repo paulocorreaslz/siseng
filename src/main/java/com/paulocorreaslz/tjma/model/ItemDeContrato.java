@@ -1,11 +1,10 @@
 package com.paulocorreaslz.tjma.model;
-
-import java.math.BigDecimal;
-
 /**
  * @author Paulo Correa <pauloyaco@gmail.com> - 2019
  *
  */
+import java.math.BigDecimal;
+
 public class ItemDeContrato {
 	
 	private long id;
@@ -53,6 +52,6 @@ public class ItemDeContrato {
 
 	@Override
 	public String toString() {
-		return "[ Insumo: "+ this.getInsumo().getId() + " - "+this.getInsumo().getDescricao() + " - " + this.getInsumo().getTipoInsumo().toString() + " - " + this.getInsumo().getUnidade() + " - " + this.getInsumo().getPreco().toString()  +"]";
+		return "["+ this.getInsumo().getId() + " - "+this.getInsumo().getDescricao() + " - " + this.getInsumo().getTipoInsumo().toString() + " - " + this.getInsumo().getUnidade() + " - " + this.getInsumo().getPreco().toString()  +"]";
 	}
 }

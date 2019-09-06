@@ -70,6 +70,11 @@ public class ContratoServiceImp implements ContratoService {
 	public List<Contrato> findAll() {
 		return contratoRepository.findAll();
 	}
+	@Override
+	public Contrato findById(long id) {
+		return contratoRepository.findById(id);
+
+	}
 	
 	
 

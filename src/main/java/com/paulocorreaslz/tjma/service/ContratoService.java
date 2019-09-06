@@ -3,8 +3,6 @@ package com.paulocorreaslz.tjma.service;
 import java.util.HashMap;
 import java.util.List;
 
-import com.paulocorreaslz.tjma.model.ItemDeContrato;
-import com.paulocorreaslz.tjma.model.ItemDeContratoComposto;
 import com.paulocorreaslz.tjma.model.*;
 
 /**
@@ -22,4 +20,6 @@ public interface ContratoService {
 
 	public List<Contrato> findAll();
 	
+	Contrato findById(long id);
+
 }

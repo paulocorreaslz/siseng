@@ -58,12 +58,12 @@ public class ItemDeContratoComposto {
         while (hashIterator.hasNext()) { 
             @SuppressWarnings("rawtypes")
         	Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
-            int index = ((int) mapElement.getValue());
+            //int index = ((int) mapElement.getValue());
             ItemDeContrato item = (ItemDeContrato) mapElement.getKey();
             subTotal = (BigDecimal) item.getInsumo().getPreco().multiply(new java.math.BigDecimal(item.getQuantidade()));
             //resposta = resposta + (item.toString() + " * "+ item.getQuantidade() + " : " + subTotal);
             if (item.getInsumo().getTipoInsumo().equals(TipoInsumo.COMPOSTO))
-            	descricaoItemComposto = item.getInsumo().getId() + " - "+ item.getInsumo().getDescricao();
+            	descricaoItemComposto = item.getInsumo().getId() + " - "+ item.getInsumo().getDescricao() + " - " + item.getInsumo().getTipoInsumo();
             valorTotal = valorTotal.add(subTotal);
         }
         resposta = resposta + (descricaoItemComposto + " - " + valorTotal);

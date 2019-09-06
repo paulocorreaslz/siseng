@@ -1,5 +1,4 @@
 package com.paulocorreaslz.tjma.controller;
-import java.util.HashMap;
 /**
  * @author Paulo Correa <pauloyaco@gmail.com> - 2019
  *
@@ -16,12 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.paulocorreaslz.tjma.model.Contrato;
 import com.paulocorreaslz.tjma.model.Insumo;
-import com.paulocorreaslz.tjma.model.ItemDeContrato;
-import com.paulocorreaslz.tjma.model.ItemDeContratoComposto;
 import com.paulocorreaslz.tjma.response.GenericResponse;
 import com.paulocorreaslz.tjma.service.imp.ContratoServiceImp;
 import com.paulocorreaslz.tjma.service.imp.InsumoServiceImp;
-import com.paulocorreaslz.tjma.util.TipoInsumo;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -58,5 +54,11 @@ public class ContratoController {
 	@GetMapping("/contratos")
 	public List<Contrato> contratos() {
 		return contratoService.findAll();
+	}
+	
+	@ApiOperation(value = "Método para buscar contrato por id", response = Iterable.class, tags = "listar insumos por tipo")
+	@GetMapping("/contrato/{id}")
+	public Contrato getContratosId(@PathVariable("id") long id) {
+		return contratoService.findById(id);
 	}
 }

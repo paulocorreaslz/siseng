@@ -9,9 +9,9 @@ import com.paulocorreaslz.tjma.model.Insumo;
 
 public interface InsumoRepository {
 
-		List<Insumo> findAll();
+	List<Insumo> findAll();
 
-		List<Insumo> findByTipoInsumo(String tipo);
-	
-		Insumo findById(long id);
+	List<Insumo> findByTipoInsumo(String tipo);
+
+	Insumo findById(long id);
 }
