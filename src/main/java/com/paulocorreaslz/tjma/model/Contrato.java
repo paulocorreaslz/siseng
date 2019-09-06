@@ -4,10 +4,14 @@ package com.paulocorreaslz.tjma.model;
  *
  */
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import com.paulocorreaslz.tjma.util.TipoInsumo;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -22,7 +26,7 @@ public class Contrato {
 	private HashMap<ItemDeContratoComposto, Integer> itemsCompostos = new HashMap<>();
 	@ApiModelProperty(notes = "Valor total do contrato",name="totalGeral",required=true,value="totalGeral")
 	private BigDecimal totalGeral = new java.math.BigDecimal(0);
-
+		
 	private BigDecimal totalItem = new java.math.BigDecimal(0);
 	private BigDecimal totalComposto = new java.math.BigDecimal(0);
 	
@@ -54,7 +58,7 @@ public class Contrato {
 	public void setItems(HashMap<ItemDeContrato, Integer> items) {
 		this.items = items;
 	}
-
+	
 	public HashMap<ItemDeContratoComposto, Integer> getItemsCompostos() {
 		return itemsCompostos;
 	}
@@ -99,7 +103,6 @@ public class Contrato {
         while (hashIterator.hasNext()) { 
             @SuppressWarnings("rawtypes")
 			Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
-            //int index = ((int) mapElement.getValue());
             ItemDeContratoComposto item = (ItemDeContratoComposto) mapElement.getKey();
             
             if(item.getItems().isEmpty()) {
@@ -109,12 +112,10 @@ public class Contrato {
             	Valor = Valor.add(calcularValorItemContratoComposto(item));
             }
         } 
-        System.out.println("Valor:"+ Valor);
         return Valor;
 	}
 	
 	public BigDecimal calcularValorItemContratoComposto(ItemDeContratoComposto composto) {
-		System.out.println("outro: "+calcularValorItemContrato(composto.getItems()));
 		BigDecimal valor = new java.math.BigDecimal(0);
 		return valor.add(calcularValorItemContrato(composto.getItems()));
 	}
@@ -124,16 +125,38 @@ public class Contrato {
 		BigDecimal valorTotal = new java.math.BigDecimal(0);
 		BigDecimal subTotal = new java.math.BigDecimal(0);
 		
-        while (hashIterator.hasNext()) { 
-            @SuppressWarnings("rawtypes")
+        while (hashIterator.hasNext()) { 	
+        	@SuppressWarnings("rawtypes")
         	Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
-           // int index = ((int) mapElement.getValue());
             ItemDeContrato item = (ItemDeContrato) mapElement.getKey();
             subTotal = (BigDecimal) item.getInsumo().getPreco().multiply(new java.math.BigDecimal(item.getQuantidade()));
-            System.out.println(item.toString() + " * "+ item.getQuantidade() + " : " + subTotal);
+            System.out.println(item.toString());
             valorTotal = valorTotal.add(subTotal);
         }  
         System.out.println("Valor Total dos items:" + valorTotal);
         return valorTotal;
+	}
+	
+	public void mostrarItemsContratoComposto() {
+		List<ItemDeContrato> listItemCompostoRetorno = new ArrayList<>();
+		Iterator<Entry<ItemDeContrato, Integer>>  hashIterator = this.getItems().entrySet().iterator();
+		BigDecimal valorTotal = new java.math.BigDecimal(0);
+		BigDecimal subTotal = new java.math.BigDecimal(0);
+        ItemDeContrato itemComposto = null;
+	    while (hashIterator.hasNext()) { 
+            @SuppressWarnings("rawtypes")
+        	Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
+            //int index = ((int) mapElement.getValue());
+            ItemDeContrato item = (ItemDeContrato) mapElement.getKey();
+            subTotal = (BigDecimal) item.getInsumo().getPreco().multiply(new java.math.BigDecimal(item.getQuantidade()));         
+            if (item.getInsumo().getTipoInsumo().equals(TipoInsumo.COMPOSTO)) {
+                itemComposto = item;
+            }
+            valorTotal = valorTotal.add(subTotal);
+        }
+        itemComposto.getInsumo().setPreco(valorTotal);
+        listItemCompostoRetorno.add(itemComposto);
+        System.out.println("lista: "+listItemCompostoRetorno);
+		//return listItemCompostoRetorno;
 	}
 }

@@ -51,6 +51,6 @@ public class ItemDeContrato {
 
 	@Override
 	public String toString() {
-		return "["+ this.getInsumo().getId() + " - "+this.getInsumo().getDescricao() + " - " + this.getInsumo().getTipoInsumo().toString() + " - " + this.getInsumo().getUnidade() + " - " + this.getInsumo().getPreco().toString()  +"]";
+		return this.getInsumo().getId() + " - "+this.getInsumo().getDescricao() + " - " + this.getInsumo().getTipoInsumo().toString() + " - " + this.getInsumo().getUnidade() + " - " + this.getInsumo().getPreco().toString()  +" * "+ this.getQuantidade() +" = "+ (BigDecimal) this.getInsumo().getPreco().multiply(new java.math.BigDecimal(this.getQuantidade()));
 	}
 }

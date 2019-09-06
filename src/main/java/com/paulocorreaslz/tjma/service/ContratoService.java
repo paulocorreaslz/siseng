@@ -1,18 +1,19 @@
 package com.paulocorreaslz.tjma.service;
-
-import java.util.List;
-
-import com.paulocorreaslz.tjma.model.Contrato;
-
 /**
  * @author Paulo Correa <pauloyaco@gmail.com> - 2019
  *
  */
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+
+import com.paulocorreaslz.tjma.model.Contrato;
+import com.paulocorreaslz.tjma.response.GenericResponse;
 
 public interface ContratoService {
 	
-	public List<Contrato> findAll();
+	public ResponseEntity<GenericResponse<List<Contrato>>> findAll();
 	
-	Contrato findById(long id);
+	ResponseEntity<GenericResponse<Contrato>> findById(long id);
 
 }

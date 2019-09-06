@@ -52,13 +52,13 @@ public class ContratoController {
 	
 	@ApiOperation(value = "Método para carregar todos contratos", response = Iterable.class, tags = "Carregar contratos")
 	@GetMapping("/contratos")
-	public List<Contrato> contratos() {
+	public ResponseEntity<GenericResponse<List<Contrato>>> contratos() {
 		return contratoService.findAll();
 	}
 	
 	@ApiOperation(value = "Método para buscar contrato por id", response = Iterable.class, tags = "listar insumos por tipo")
 	@GetMapping("/contrato/{id}")
-	public Contrato getContratosId(@PathVariable("id") long id) {
+	public ResponseEntity<GenericResponse<Contrato>>  getContratosId(@PathVariable("id") long id) {
 		return contratoService.findById(id);
 	}
 }
