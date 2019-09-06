@@ -1,9 +1,8 @@
 package com.paulocorreaslz.tjma.service;
 
-import java.util.HashMap;
 import java.util.List;
 
-import com.paulocorreaslz.tjma.model.*;
+import com.paulocorreaslz.tjma.model.Contrato;
 
 /**
  * @author Paulo Correa <pauloyaco@gmail.com> - 2019
@@ -12,12 +11,6 @@ import com.paulocorreaslz.tjma.model.*;
 
 public interface ContratoService {
 	
-	public void calcularItemsContratoComposto();
-	
-	public void calcularValorItemContratoComposto(ItemDeContratoComposto composto);
-	
-	public void calcularValorItemContrato(HashMap<ItemDeContrato, Integer> hashMap);
-
 	public List<Contrato> findAll();
 	
 	Contrato findById(long id);

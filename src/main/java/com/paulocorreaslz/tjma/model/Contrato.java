@@ -23,6 +23,9 @@ public class Contrato {
 	@ApiModelProperty(notes = "Valor total do contrato",name="totalGeral",required=true,value="totalGeral")
 	private BigDecimal totalGeral = new java.math.BigDecimal(0);
 
+	private BigDecimal totalItem = new java.math.BigDecimal(0);
+	private BigDecimal totalComposto = new java.math.BigDecimal(0);
+	
 	public Contrato(long id, String contrato) {
 		this.id = id;
 		this.contrato = contrato;
@@ -61,6 +64,11 @@ public class Contrato {
 	}
 
 	public BigDecimal getTotal() {
+		
+		totalItem = totalItem.add(this.calcularValorItemContrato(this.getItems()));
+		totalComposto = totalComposto.add(this.calcularItemsContratoComposto());
+		totalGeral = totalGeral.add(totalItem);
+		totalGeral = totalGeral.add(totalComposto);
 		return totalGeral;
 	}
 
@@ -83,15 +91,49 @@ public class Contrato {
 	public void removerItemComposto(ItemDeContratoComposto item) {
 		this.itemsCompostos.remove(item);
 	}
-
-//	public void mostrarItemsContrato(HashMap<ItemDeContrato, Integer> hashMap) {
-//		Iterator<Entry<ItemDeContrato, Integer>> hashIterator = hashMap.entrySet().iterator(); 
-//		while (hashIterator.hasNext()) { 
-//			@SuppressWarnings("rawtypes")
-//			Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
-//			int index = ((int) mapElement.getValue());
-//			ItemDeContrato item = (ItemDeContrato) mapElement.getKey();
-//			System.out.println(item.toString() + " : " + index); 
-//		} 
-//	}
+	
+	public BigDecimal calcularItemsContratoComposto() {
+	
+		BigDecimal Valor = new java.math.BigDecimal(0);
+		Iterator<Entry<ItemDeContratoComposto, Integer>> hashIterator = this.getItemsCompostos().entrySet().iterator(); 
+        while (hashIterator.hasNext()) { 
+            @SuppressWarnings("rawtypes")
+			Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
+            //int index = ((int) mapElement.getValue());
+            ItemDeContratoComposto item = (ItemDeContratoComposto) mapElement.getKey();
+            
+            if(item.getItems().isEmpty()) {
+            	System.out.println("nenhum item de contrato composto dentro");
+            	return new java.math.BigDecimal(0);
+            } else {
+            	Valor = Valor.add(calcularValorItemContratoComposto(item));
+            }
+        } 
+        System.out.println("Valor:"+ Valor);
+        return Valor;
+	}
+	
+	public BigDecimal calcularValorItemContratoComposto(ItemDeContratoComposto composto) {
+		System.out.println("outro: "+calcularValorItemContrato(composto.getItems()));
+		BigDecimal valor = new java.math.BigDecimal(0);
+		return valor.add(calcularValorItemContrato(composto.getItems()));
+	}
+	
+	public BigDecimal calcularValorItemContrato(HashMap<ItemDeContrato, Integer> hashMap) {
+		Iterator<Entry<ItemDeContrato, Integer>>  hashIterator = hashMap.entrySet().iterator();
+		BigDecimal valorTotal = new java.math.BigDecimal(0);
+		BigDecimal subTotal = new java.math.BigDecimal(0);
+		
+        while (hashIterator.hasNext()) { 
+            @SuppressWarnings("rawtypes")
+        	Map.Entry mapElement = (Map.Entry) hashIterator.next(); 
+           // int index = ((int) mapElement.getValue());
+            ItemDeContrato item = (ItemDeContrato) mapElement.getKey();
+            subTotal = (BigDecimal) item.getInsumo().getPreco().multiply(new java.math.BigDecimal(item.getQuantidade()));
+            System.out.println(item.toString() + " * "+ item.getQuantidade() + " : " + subTotal);
+            valorTotal = valorTotal.add(subTotal);
+        }  
+        System.out.println("Valor Total dos items:" + valorTotal);
+        return valorTotal;
+	}
 }

@@ -44,7 +44,6 @@ public class ItemDeContrato {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	
 		
 	public BigDecimal getValor() {
 		return this.getInsumo().getPreco().multiply(new java.math.BigDecimal(this.getQuantidade()));
